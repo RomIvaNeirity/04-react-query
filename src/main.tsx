@@ -1,11 +1,18 @@
-import 'modern-normalize'
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import "modern-normalize";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import App from '../src/components/App/App.tsx'
+import App from "../src/components/App/App.tsx";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const queryClient = new QueryClient();
+
+createRoot(document.getElementById("root")!).render(
+  <QueryClientProvider client={queryClient}>
+    <StrictMode>
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </StrictMode>
+  </QueryClientProvider>
+);
