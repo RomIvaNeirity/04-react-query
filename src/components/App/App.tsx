@@ -36,7 +36,7 @@ function App() {
       toast.error("Please enter your search query.");
       return;
     }
-
+    setCurrentPage(1);
     setQuery(request);
   };
 
